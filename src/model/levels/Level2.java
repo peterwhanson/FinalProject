@@ -102,7 +102,7 @@ public class Level2 extends Level implements Serializable{
 	@Override
 	public void setPlayerStartingMoney() {
 		// TODO Auto-generated method stub
-		getPlayer().setMoney(2700);
+		getPlayer().setMoney(4700);
 		notifyPlayerInfoUpdated(getPlayer().getHealthPoints(), getPlayer().getMoney());
 	}
 

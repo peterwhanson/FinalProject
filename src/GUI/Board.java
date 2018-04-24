@@ -277,7 +277,7 @@ public class Board extends JPanel implements MouseListener
 				//System.out.println("Enemy ID (Adding): " + ((EnemyTile) enemies.get(j)).getID());
 				if(this.enemies.get(i).getID().equals(((EnemyTile) enemiesInUpdate.get(j)).getID()))
 					break;
-				if(j == enemiesInUpdate.size() - 1)
+				if(j == (enemiesInUpdate.size() - 1))
 				{
 					System.out.println("Removing enemy: " + this.enemies.get(i).getPokeName());
 					this.remove(this.enemies.remove(i));
@@ -286,10 +286,11 @@ public class Board extends JPanel implements MouseListener
 				}
 			}
 		}
+		
 		//Creates an EnemyTile in Board's list for each one it is missing from the update?
 		while(this.enemies.size() < enemiesInUpdate.size())
 		{
-			EnemyTile tempTile = (EnemyTile) enemiesInUpdate.get(this.enemies.size());
+			EnemyTile tempTile = (EnemyTile) enemiesInUpdate.get(this.enemies.size()); //Can we trust that the new enemies to add are always at end of this list?
 			tempTile.addMouseListener(new EnemyClickListener());
 			this.enemies.add(tempTile);
 			System.out.println("Added a new EnemyImage to board: " + tempTile.getPokeName());
@@ -318,11 +319,12 @@ public class Board extends JPanel implements MouseListener
 			//System.out.println("End of list.");
 			  
 			 
-			
+		if(this.enemies.size() == enemiesInUpdate.size()) {	
+		
 			int i = 0;
 			for(JLabel label : this.enemies)
 			{
-				if(i < enemies.size()){//Peter added this if statement to try to avoid index out of bounds errors but they still came
+				if(i < this.enemies.size()){//Peter added this if statement to try to avoid index out of bounds errors but they still came
 					label.setLocation(enemiesInUpdate.get(i).getLocation().x, enemiesInUpdate.get(i).getLocation().y); //TODO: Desone this is giving indexoutofbounds occasionally
 					label.setIcon(enemiesInUpdate.get(i).getIcon());
 				}
@@ -339,6 +341,9 @@ public class Board extends JPanel implements MouseListener
 				bar.setValue(((EnemyTile) enemiesInUpdate.get(i)).getHealth());
 				i++;
 			}
+			
+		}
+			
 			repaint();
 	}
 	

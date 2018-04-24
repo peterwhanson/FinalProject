@@ -107,6 +107,7 @@ public class AbraTower extends Tower{
 	
 	@Override
 	public boolean levelUp() {
+		this.levelIncrease(); 		// increases the level by one
 		if (super.getCurrentLevel() == 2){
 			super.setImageURL(level2);
 			super.setPokemonName("Kadabra");
